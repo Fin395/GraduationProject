@@ -32,15 +32,21 @@ class Section(models.Model):
     )
     title = models.CharField(
         max_length=50,
-        verbose_name='Заголовок на странице'
+        verbose_name='Заголовок на странице',
+        blank = True,
+        null = True
     )
     image = models.ImageField(
         upload_to='photos/',
-        verbose_name="Изображение на странице"
+        verbose_name="Изображение на странице",
+        blank=True,
+        null=True
     )
     page = models.ForeignKey(Page, verbose_name='Страница', on_delete=models.CASCADE, related_name='page_sections')
     content = models.TextField(
-        verbose_name="Текст на странице"
+        verbose_name="Текст на странице",
+        blank=True,
+        null=True
     )
     epigraph = models.TextField(
         verbose_name="Эпиграф",
