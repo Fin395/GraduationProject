@@ -4,7 +4,7 @@ from .models import PageCategory, Page
 @admin.register(PageCategory)
 class PageCategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
-    search_fields = 'name'
+    search_fields = ('name',)
 
 
 @admin.register(Page)
