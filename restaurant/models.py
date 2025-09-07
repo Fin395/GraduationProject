@@ -36,9 +36,7 @@ class Restaurant(models.Model):
         blank=True,
         null=True,
     )
-    client_name = models.CharField(max_length=50, verbose_name='Имя')
-    client_phone_number = models.CharField(max_length=25, verbose_name='Телефон')
-    client_message = models.TextField(verbose_name='Сообщение')
+
     owner = models.ForeignKey(
         User,
         verbose_name='Владелец',
