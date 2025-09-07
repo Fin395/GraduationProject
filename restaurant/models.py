@@ -3,56 +3,54 @@ from django.db import models
 from users.models import User
 
 
-class PageCategory(models.Model):
+class Restaurant(models.Model):
     name = models.CharField(
         max_length=50,
-        verbose_name="Название раздела",
-        help_text="Введите название раздела",
+        verbose_name="Название ресторана",
     )
 
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Название раздела"
-        verbose_name_plural = "Названия разделов"
-
-
-class Page(models.Model):
-    name = models.CharField(
-        max_length=100,
-        verbose_name="Название страницы",
-    )
-
-    title = models.CharField(
-        max_length=100,
-        verbose_name="Заголовок на странице",
-    )
     epigraph = models.TextField(
         verbose_name="Эпиграф",
-        blank=True,
-        null=True,
     )
-
     description = models.TextField(
-        verbose_name="Описание на странице",
+        verbose_name="Описание ресторана"
+    )
+    image = models.ImageField(upload_to="photos/", verbose_name="Изображение ресторана")
+    services = models.TextField(verbose_name="Услуги ресторана")
+    email = models.EmailField(unique=True, verbose_name='Email')
+    phone_number = models.CharField(
+        max_length=25,
+        verbose_name='Телефон',
         blank=True,
         null=True,
     )
-    image = models.ImageField(
-        upload_to="photos/",
+    country = models.CharField(
+        max_length=35,
+        verbose_name='Страна',
         blank=True,
         null=True,
-        verbose_name="Изображение на странице",
     )
-    page_category = models.ForeignKey(PageCategory, on_delete=models.CASCADE, related_name='pages')
-
-    owner = models.ForeignKey(User, verbose_name='Владелец', blank=True, null=True, on_delete=models.SET_NULL, related_name='owner_pages')
+    address = models.CharField(
+        max_length=50,
+        verbose_name='Адрес',
+        blank=True,
+        null=True,
+    )
+    client_name = models.CharField(max_length=50, verbose_name='Имя')
+    client_phone_number = models.CharField(max_length=25, verbose_name='Телефон')
+    client_message = models.TextField(verbose_name='Сообщение')
+    owner = models.ForeignKey(
+        User,
+        verbose_name='Владелец',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='restaurants')
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "Страница"
-        verbose_name_plural = "Страницы"
+        verbose_name = 'Ресторан'
+        verbose_name_plural = 'Рестораны'
         # permissions = [('can_unpublish_product', 'Can unpublish product')]

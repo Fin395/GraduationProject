@@ -9,7 +9,7 @@ from restaurant.views import DescriptionView, ContactsView, ServicesView, Feedba
 app_name = RestaurantConfig.name
 
 urlpatterns = [
-    path('description/<int:pk>/', DescriptionView.as_view(), name='description'),
+    path('description/', DescriptionView.as_view(), name='description'),
     path('contacts/', ContactsView.as_view(), name='contacts'),
     path('services/', ServicesView.as_view(), name='services'),
     path('feedback/', FeedbackView.as_view(), name='feedback'),

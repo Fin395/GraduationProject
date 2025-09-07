@@ -1,14 +1,7 @@
 from django.contrib import admin
-from .models import PageCategory, Page
+from .models import Restaurant
 
-@admin.register(PageCategory)
+
+@admin.register(Restaurant)
 class PageCategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
-    search_fields = ('name',)
-
-
-@admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'page_category',)
-    list_filter = ('name', 'page_category',)
-    search_fields = ('name', 'description',)
+    list_display = ('name', 'owner')

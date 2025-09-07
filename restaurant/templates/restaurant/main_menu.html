@@ -1,16 +1,14 @@
 <ul class="nav nav-tabs">
-  {% for cat in page_categories %}
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ cat }}</a>
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Главная страница</a>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="{% url 'restaurant:description' cat.pk %}">Описание ресторана</a></li>
+      <li><a class="dropdown-item" href="{% url 'restaurant:description' %}">Описание ресторана</a></li>
       <li><a class="dropdown-item" href="{% url 'restaurant:services' %}">Перечень предоставляемых услуг</a></li>
       <li><a class="dropdown-item" href="{% url 'restaurant:contacts' %}">Контактная информация</a></li>
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="{% url 'restaurant:feedback' %}">Форма обратной связи</a></li>
     </ul>
   </li>
-    {% endfor %}
 
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">О ресторане</a>
@@ -28,21 +26,6 @@
       <li><a class="dropdown-item" href="{% url 'restaurant:mission' %}">Просмотр доступности столиков</a></li>
       <li><a class="dropdown-item" href="{% url 'restaurant:team' %}">Подтверждение бронирования</a></li>
     </ul>
-  </li>
-
-
-
-
-
-    <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="#">Active</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 
