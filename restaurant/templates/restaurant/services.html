@@ -1,0 +1,25 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Услуги{% endblock %}</title>
+
+{% block content %}
+<div class="card mb-3" style="max-width: 2200px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ MEDIA_URL }}{{ image_path }}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-md-8">
+            <div class="card text">
+                <div class="card-header fw-bolder w-75 p-3 fs-2">Мы предоставляем услуги:</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">- онлайн-бронирование столиков;</li>
+                    <li class="list-group-item">- проведение чайной церемонии;</li>
+                    <li class="list-group-item">- предоставление связи;</li>
+                    <li class="list-group-item">- зарядка телефона/планшета/ноутбука;</li>
+                    <li class="list-group-item">- вызов такси;</li>
+                    <li class="list-group-item">- упаковка продуктов на вынос.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
