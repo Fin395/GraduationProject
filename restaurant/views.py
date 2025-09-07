@@ -1,4 +1,9 @@
-from django.views.generic import TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, CreateView
+
+from restaurant.forms import PageForm
+from restaurant.models import Page
+
 
 # , DetailView, ListView)
 # from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -74,6 +79,20 @@ class TeamView(TemplateView):
 
         return context
 
+
+class PageCreateView(CreateView):
+    model = Page
+    form_class = PageForm
+    template_name = 'restaurant/page_form.html'
+    success_url = reverse_lazy('restaurant:description')
+    # login_url = reverse_lazy('users:login')
+
+    def form_valid(self, form):
+        page = form.save()
+        user = self.request.user
+        page.owner = user
+        page.save()
+        return super().form_valid(form)
 
 # class BlogContactsView(TemplateView):
 #     template_name = 'blog/contacts.html'
