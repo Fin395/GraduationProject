@@ -28,6 +28,12 @@ class Page(models.Model):
         max_length=100,
         verbose_name="Заголовок на странице",
     )
+    epigraph = models.TextField(
+        verbose_name="Эпиграф",
+        blank=True,
+        null=True,
+    )
+
     description = models.TextField(
         verbose_name="Описание на странице",
         blank=True,

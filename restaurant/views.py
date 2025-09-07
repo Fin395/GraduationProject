@@ -1,8 +1,9 @@
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 
 from restaurant.forms import PageForm
-from restaurant.models import Page
+from restaurant.models import Page, PageCategory
 
 
 # , DetailView, ListView)
@@ -16,7 +17,8 @@ class DescriptionView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['image_path'] = '/static/images/IMG-20250906-WA0030.jpg'
-
+        context['page_category'] = get_object_or_404(PageCategory, id=self.kwargs.get('pk'))
+        context['page_categories'] = PageCategory.objects.all()
         return context
 
 
@@ -93,6 +95,22 @@ class PageCreateView(CreateView):
         page.owner = user
         page.save()
         return super().form_valid(form)
+
+
+# class MainPageView(ListView):
+#     model = Page
+#     template_name = 'catalog/products_by_category_list.html'
+#
+#     # def get_queryset(self):
+#     #     category_id = self.kwargs.get('pk')
+#     #     return ProductService.get_products_by_category_cached(category_id)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['page_category'] = get_object_or_404(PageCategory, id=self.kwargs.get('pk'))
+#         context['page_categories'] = PageCategory.objects.all()
+#         return context
+
 
 # class BlogContactsView(TemplateView):
 #     template_name = 'blog/contacts.html'
