@@ -5,16 +5,8 @@ from users.models import User
 
 class Page(models.Model):
     name = models.CharField(
-        max_length=50,
+        max_length=100,
         verbose_name='Название страницы'
-    )
-    owner = models.ForeignKey(
-        User,
-        verbose_name='Владелец',
-        on_delete=models.SET_NULL,
-        related_name='pages',
-        blank=True,
-        null=True
     )
 
     def __str__(self):
@@ -53,6 +45,7 @@ class Section(models.Model):
         blank=True,
         null=True,
     )
+
     email = models.EmailField(
         unique=True,
         verbose_name='Email',
@@ -78,13 +71,15 @@ class Section(models.Model):
         null=True,
     )
 
-    owner = models.ForeignKey(
-        User,
-        verbose_name='Владелец',
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='sections')
+    TEMPLATE_CHOICES = [
+        ('description', 'Описание ресторана'),
+        ('services', 'Перечень услуг'),
+        ('contacts', 'Контактная информация'),
+        ('feedback', 'Обратная связь'),
+        ('history', 'История'),
+        ('mission', 'Ценности и миссия'),
+        ('team', 'Наша команда'),
+    ]
 
     def __str__(self):
         return self.name

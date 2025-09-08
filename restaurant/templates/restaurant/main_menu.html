@@ -1,4 +1,29 @@
 <ul class="nav nav-tabs">
+  {% for page in pages %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Главная страница</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'restaurant:description' %}">Описание ресторана</a></li>
+      <li><a class="dropdown-item" href="{% url 'restaurant:services' %}">Перечень предоставляемых услуг</a></li>
+      <li><a class="dropdown-item" href="{% url 'restaurant:contacts' %}">Контактная информация</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="{% url 'restaurant:feedback' %}">Форма обратной связи</a></li>
+    </ul>
+  </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Главная страница</a>
     <ul class="dropdown-menu">

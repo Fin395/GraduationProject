@@ -1,7 +1,11 @@
 from django.urls import path
+
+from restaurant import views
 from restaurant.apps import RestaurantConfig
-from restaurant.views import DescriptionView, ContactsView, ServicesView, FeedbackView, HistoryView, MissionView, \
-    TeamView
+from restaurant.views import WelcomePageView
+
+# from restaurant.views import DescriptionView, ContactsView, ServicesView, FeedbackView, HistoryView, MissionView, \
+#     TeamView
 
 # , BlogContactsView, ArticleDetailView, ArticlesListView, ArticleCreateView, \
 #     ArticleUpdateView, ArticleDeleteView)
@@ -9,13 +13,15 @@ from restaurant.views import DescriptionView, ContactsView, ServicesView, Feedba
 app_name = RestaurantConfig.name
 
 urlpatterns = [
-    path('description/', DescriptionView.as_view(), name='description'),
-    path('contacts/', ContactsView.as_view(), name='contacts'),
-    path('services/', ServicesView.as_view(), name='services'),
-    path('feedback/', FeedbackView.as_view(), name='feedback'),
-    path('history/', HistoryView.as_view(), name='history'),
-    path('mission/', MissionView.as_view(), name='mission'),
-    path('team/', TeamView.as_view(), name='team'),
+    path('', WelcomePageView.as_view(), name='wellcome'),
+    # path('description/', views.page_detail, name='description'),
+    # path('description/', DescriptionView.as_view(), name='description'),
+    # path('contacts/', ContactsView.as_view(), name='contacts'),
+    # path('services/', ServicesView.as_view(), name='services'),
+    # path('feedback/', FeedbackView.as_view(), name='feedback'),
+    # path('history/', HistoryView.as_view(), name='history'),
+    # path('mission/', MissionView.as_view(), name='mission'),
+    # path('team/', TeamView.as_view(), name='team'),
 
     # path('<int:pk>/', ArticleDetailView.as_view(), name='article_detail'),
     # path('', ArticlesListView.as_view(), name='article_list'),

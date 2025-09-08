@@ -1,0 +1,16 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Добро пожаловать{% endblock %}</title>
+
+{% block content %}
+<div class="card text-bg-dark">
+  <img src="{{ MEDIA_URL }}{{ image_path }}" class="card-img">
+  <div class="card-img-overlay">
+    <p class="card-text fst-italic d-flex justify-content-lg-end">В каждом блюде — история, в каждом голосе — тепло души.</p>
+    <p class="card-text fst-italic d-flex justify-content-lg-end">Добро пожаловать туда, где вечер начинается с аромата, а сердце — с улыбки.</p>
+    <div class="card-body">
+        <h3 class="w-75 p-3 card-title">Rest-or-run</h3>
+        <p class="w-75 p-3 lh-base fw-bolder">Добро пожаловать в наш ресторан! Приглашаем Вас окунуться в тонкий и загадочный мир Востока! Изысканные блюда, невероятная атмосфера - лишь малая часть того, что Вас ожидает в наших стенах. Ознакомьтесь с нашей историей и концепцией, бронируйте столик - и Вы не заметите, как окажетесь в удивительном мире, куда захочется возвращаться снова и снова. Желаем Вам приятного путешествия!</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

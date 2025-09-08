@@ -1,4 +1,8 @@
-from django.views.generic import TemplateView, CreateView
+from django.shortcuts import render
+from django.views.generic import TemplateView, CreateView, DetailView
+from rest_framework.generics import get_object_or_404
+
+from restaurant.models import Page
 
 
 # , DetailView, ListView)
@@ -6,77 +10,93 @@ from django.views.generic import TemplateView, CreateView
 # from django.urls import reverse_lazy
 # from blog.models import Article
 
-class DescriptionView(TemplateView):
-    template_name = 'restaurant/description.html'
+
+class WelcomePageView(TemplateView):
+    template_name = 'restaurant/wellcome.html'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/IMG-20250906-WA0030.jpg'
+         context = super().get_context_data(**kwargs)
+         context['image_path'] = '/static/images/IMG-20250906-WA0030.jpg'
 
-        return context
-
-
-class ContactsView(TemplateView):
-    template_name = 'restaurant/contacts.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/krasivyi-snimok-goroda-dinastii-sun-sihu-kitai.jpg'
-
-        return context
+# class PageDetailView(DetailView):
+#     model = Page
+#     template
+#         = get_object_or_404(Page)
+#     return render(request, 'restaurant/description.html', {'page': page})
+#
 
 
-class ServicesView(TemplateView):
-    template_name = 'restaurant/services.html'
+# class DescriptionView(TemplateView):
+#     template_name = 'restaurant/description.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/IMG-20250906-WA0030.jpg'
+#
+#         return context
+#
+#
+# class ContactsView(TemplateView):
+#     template_name = 'restaurant/contacts.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/krasivyi-snimok-goroda-dinastii-sun-sihu-kitai.jpg'
+#
+#         return context
+#
+#
+# class ServicesView(TemplateView):
+#     template_name = 'restaurant/services.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/IMG-20250906-WA0028 (3).jpg'
+#
+#         return context
+#
+#
+# class FeedbackView(TemplateView):
+#     template_name = 'restaurant/feedback.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/feedback.jpg'
+#
+#         return context
+#
+#
+# class HistoryView(TemplateView):
+#     template_name = 'restaurant/history.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/20250907_014507.jpg'
+#
+#         return context
+#
+#
+# class MissionView(TemplateView):
+#     template_name = 'restaurant/mission.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/20230915_182702.jpg'
+#
+#         return context
+#
+#
+# class TeamView(TemplateView):
+#     template_name = 'restaurant/team.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['image_path'] = '/static/images/team.jpg'
+#
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/IMG-20250906-WA0028 (3).jpg'
 
-        return context
-
-
-class FeedbackView(TemplateView):
-    template_name = 'restaurant/feedback.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/feedback.jpg'
-
-        return context
-
-
-class HistoryView(TemplateView):
-    template_name = 'restaurant/history.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/20250907_014507.jpg'
-
-        return context
-
-
-class MissionView(TemplateView):
-    template_name = 'restaurant/mission.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/20230915_182702.jpg'
-
-        return context
-
-
-class TeamView(TemplateView):
-    template_name = 'restaurant/team.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['image_path'] = '/static/images/team.jpg'
-
-        return context
-
-
-
+#
 # class ArticleDetailView(DetailView):
 #     model = Article
 #
