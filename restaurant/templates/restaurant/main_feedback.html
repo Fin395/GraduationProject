@@ -1,0 +1,42 @@
+{% extends 'restaurant/base.html' %}
+
+
+{% block content %}
+<title>{% block title %}Обратная связь{% endblock %}</title>
+
+<div class="card mb-3" style="max-width: 2200px;">
+    <div class="row g-2">
+        <div class="col-md-5">
+            <img src="{{ MEDIA_URL }}{{ object.image.url }}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-16">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="" class="form-floating">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name">{{object.}}</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone">Телефон</label>
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Контактный телефон"
+                               required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message">Сообщение</label>
+                            <textarea type="text" name="message" class="form-control" id="message"
+                                  placeholder="Контактный телефон" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

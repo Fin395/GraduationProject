@@ -1,0 +1,14 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Описание{% endblock %}</title>
+
+{% block content %}
+<div class="card text-bg-dark">
+  <img src="{{ MEDIA_URL }}{{ object.image.url }}" class="card-img">
+  <div class="card-img-overlay">
+    <div class="card-body">
+        <h3 class="w-75 p-3 card-title">{{ object.title }}</h3>
+        <p class="w-75 p-3 lh-lg fw-bolder">{{ object.content }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
