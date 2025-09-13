@@ -23,23 +23,33 @@ class SectionDetailView(DetailView):
     context_object_name = 'section'
 
     TEMPLATE_MAP = {
-        "О ресторане": "main_description.html",
-        "Команда": "about_team.html",
-        "Услуги": "main_services.html",
-        "История ресторана": "about_history.html",
-        "Миссия и ценности": "about_mission.html",
-        "Контактная информация": "main_contacts.html",
-        "Обратная связь": "main_feedback.html",
-        "На главную": "welcome.html",
+        "О ресторане": "restaurant/main_description.html",
+        "Команда": "restaurant/about_team.html",
+        "Услуги": "restaurant/main_services.html",
+        "История ресторана": "restaurant/about_history.html",
+        "Миссия и ценности": "restaurant/about_mission.html",
+        "Контактная информация": "restaurant/main_contacts.html",
+        "Обратная связь": "restaurant/main_feedback.html",
+        "На главную": "restaurant/welcome.html",
+        "Управление бронированием": "users/profile.html",
+        "Выйти": "users/logout.html",
+        "Войти": "users/login.html",
+        "Зарегистрироваться": "users/register.html",
+        "Забронировать": "restaurant/book.html",
+        "Просмотр столиков": "restaurant/tables_list.html",
+        
+
     }
 
     def get_template_names(self):
         section = self.get_object()
-        return [f'restaurant/{self.TEMPLATE_MAP.get(section.name)}']
+        return [f'{self.TEMPLATE_MAP.get(section.name)}']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['pages'] = Page.objects.prefetch_related('page_sections').all()
+        context['user'] = self.request.user
+
         return context
 
 #
