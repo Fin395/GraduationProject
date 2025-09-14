@@ -1,42 +1,31 @@
 {% extends 'restaurant/base.html' %}
 <title>{% block title %}Мой профиль{% endblock %}</title>
 {% block content %}
-<div class="card mb-3" style="max-width: 840px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{ MEDIA_URL }}{{ image_path }}" class="img-fluid rounded-start" alt="{{ object }}">
-    </div>
-    <div class="col-md-8">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Имя: {{ object.name }}</li>
-        <li class="list-group-item">Фамилия: {{ object.surname }}</li>
-        <li class="list-group-item">Email: {{ object.email }}</li>
-        <li class="list-group-item">Телефон: {{object.phone_number}}</li>
-        <li class="list-group-item">Страна: {{object.country}}}}</li>
-      </ul>
-      <div class="card-body">
-        <a href="{% url 'users:user_update' object.pk %}" class="card-link">Редактировать</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-<div class="card">
-    <div class="card-header">
-        Пользователь {{ object }}
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Телефон: {{ object.phone_number }}</h5>
-        <h6 class="card-title">Страна: {{ object.country }}</h6>
-        <a class="card-link link-outline-danger" href="{% url 'users:user_update' object.pk %}">Редактировать</a>
-
+<div class="card mb-3" style="max-width: 1100px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ MEDIA_URL }}{{ image_path }}" class="img-fluid rounded-start" alt="{{ object }}">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Мой профиль</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Имя: {{ object.name }}</li>
+                <li class="list-group-item">Фамилия: {{ object.surname }}</li>
+                <li class="list-group-item">Email: {{ object.email }}</li>
+                <li class="list-group-item">Телефон: {{ object.phone_number }}</li>
+                <li class="list-group-item">Страна: {{ object.country }}</li>
+            </ul>
+            <div class="card-body">
+                <a class="icon-link" href="{% url 'users:user_update' object.pk %}">
+                    Редактировать профиль
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -5,7 +5,7 @@ from .models import User
 class UserRegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('email', 'avatar', 'phone_number', 'country', 'password1', 'password2')
+        fields = ('name', 'surname', 'email', 'avatar', 'phone_number', 'country', 'password1', 'password2')
 
     def clean(self):
         cleaned_data = super().clean()

@@ -98,10 +98,8 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserRegistrationForm
     template_name = 'users/register.html'
-    login_url = reverse_lazy('users:login')
+    success_url = reverse_lazy('users:login')
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('users:user_detail', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -120,19 +118,3 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         context['user'] = self.request.user
 
         return context
-
-
-
-
-class ProfileView(TemplateView):
-    template_name = 'users/profile.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pages'] = Page.objects.prefetch_related('page_sections').all()
-        context['user'] = self.request.user
-
-        return context
-
-
-
