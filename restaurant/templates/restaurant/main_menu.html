@@ -4,9 +4,6 @@
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ page.name }}</a>
         <ul class="dropdown-menu">
             {% if page.name == "Личный кабинет" %}
-                <li><a class="dropdown-item" href="#">Управление бронированием</a></li>
-                <li><a class="dropdown-item" href="#">История бронирований</a></li>
-
                 {% if user.is_authenticated %}
                         <li>
                             <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
@@ -14,6 +11,11 @@
                                 <button type="submit" class="dropdown-item">Выйти</button>
                             </form>
                         </li>
+                        <li><a class="dropdown-item" href="#">Управление бронированием</a></li>
+                        <li><a class="dropdown-item" href="#">История бронирований</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:user_detail' user.pk %}">Мой профиль</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:user_update' user.pk %}">Редактировать профиль</a></li>
+
                 {% else %}
                     <li><a class="dropdown-item" href="{% url 'users:login' %}">Войти</a></li>
                     <li><a class="dropdown-item" href="{% url 'users:register' %}">Зарегистрироваться</a></li>

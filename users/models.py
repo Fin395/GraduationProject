@@ -4,6 +4,20 @@ from django.db import models
 
 class User(AbstractUser):
     username = None
+    name = models.CharField(
+        max_length=35,
+        verbose_name='Имя',
+        blank=True,
+        null=True,
+        help_text='Укажите имя',
+    )
+    surname = models.CharField(
+        max_length=35,
+        verbose_name='Фамилия',
+        blank=True,
+        null=True,
+        help_text='Укажите фамилию',
+    )
     email = models.EmailField(unique=True, verbose_name='Email')
 
     avatar = models.ImageField(

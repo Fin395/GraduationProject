@@ -31,13 +31,13 @@ class SectionDetailView(DetailView):
         "Контактная информация": "restaurant/main_contacts.html",
         "Обратная связь": "restaurant/main_feedback.html",
         "На главную": "restaurant/welcome.html",
-        "Управление бронированием": "users/profile.html",
-        "Выйти": "users/logout.html",
-        "Войти": "users/login.html",
-        "Зарегистрироваться": "users/register.html",
-        "Забронировать": "restaurant/book.html",
-        "Просмотр столиков": "restaurant/tables_list.html",
-        
+        # "Управление бронированием": "users/profile.html",
+        # "Выйти": "users/logout.html",
+        # "Войти": "users/login.html",
+        # "Зарегистрироваться": "users/register.html",
+        # "Забронировать": "restaurant/book.html",
+        # "Просмотр столиков": "restaurant/tables_list.html",
+        #
 
     }
 

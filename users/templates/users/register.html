@@ -6,6 +6,10 @@
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
+    {% if object %}
+    <button type="submit">Сохранить</button>
+    {% else %}
+        <button type="submit">Зарегистрироваться</button>
+    {% endif %}
   </form>
 {% endblock %}
