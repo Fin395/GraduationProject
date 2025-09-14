@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page, Section
+from .models import Page, Section, Table
 
 
 @admin.register(Page)
@@ -14,3 +14,7 @@ class SectionAdmin(admin.ModelAdmin):
     search_fields = ('name', 'page')
     list_filter = ('page',)
 
+
+@admin.register(Table)
+class TableAdmin(admin.ModelAdmin):
+    list_display = ('id', 'seats_amount', 'is_reserved',)

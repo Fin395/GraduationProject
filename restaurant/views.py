@@ -1,7 +1,8 @@
-from django.views.generic import TemplateView, CreateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 from rest_framework.generics import get_object_or_404
 
-from restaurant.models import Page, Section
+from restaurant.models import Page, Section, Table
 
 
 # , DetailView, ListView)
@@ -52,7 +53,7 @@ class SectionDetailView(DetailView):
 
         return context
 
-#
+
 # class HomePageView(DetailView):
 #     model = Section
 #     template_name = 'restaurant/welcome.html'
