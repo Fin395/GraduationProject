@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Table(models.Model):
     seats_amount = models.PositiveSmallIntegerField(verbose_name='Количество мест')
@@ -34,7 +36,7 @@ class Reservation(models.Model):
     time = models.CharField(max_length=5, choices=TIME_CHOICES, default='10:00', verbose_name='Время')
     table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name='tables', verbose_name='Столик')
     date = models.DateField(verbose_name='Дата')
-
+    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='clients', verbose_name='Клиент', blank=True, null=True)
 
     def __str__(self):
         return f'Бронь на {self.date} в {self.time}'
