@@ -1,7 +1,7 @@
 from django.urls import path
 
 from booking.apps import BookingConfig
-from booking.views import TableListView
+from booking.views import TableListView, ReservationCreateView
 # from restaurant import views
 from restaurant.apps import RestaurantConfig
 from restaurant.views import SectionDetailView
@@ -11,6 +11,7 @@ app_name = BookingConfig.name
 
 urlpatterns = [
     path('tables/', TableListView.as_view(), name='table_list'),
+    path('reservation/', ReservationCreateView.as_view(), name='reservation_create'),
 
     # path('main/description/<int:pk>/', MainDescriptionView.as_view(), name='main_description'),
     # path('main/contacts/<int:pk>/', MainContactsView.as_view(), name='main_contacts'),

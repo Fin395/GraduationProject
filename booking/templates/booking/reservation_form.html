@@ -1,0 +1,25 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Новая бронь{% endblock %}</title>
+{% block content %}
+<div class="card mb-3" style="max-width: 800px;">
+    <div class="row g-2">
+        <div class="col-md-5">
+            <img src="{{ MEDIA_URL }}{{ image_path }}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-16">
+            <h2>Бронь</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                {% if object %}
+                <a href="{% url 'booking:table_list' %}" class="btn btn-secondary">Отмена</a>
+                {% else %}
+                <a href="{% url 'booking:table_list' %}" class="btn btn-secondary">Отмена</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
