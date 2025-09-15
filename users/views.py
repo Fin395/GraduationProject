@@ -24,7 +24,7 @@ class UserRegisterView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pages'] = Page.objects.prefetch_related('page_sections').all()
+        context['pages'] = Page.objects.all()
         context['user'] = self.request.user
 
         return context
@@ -64,7 +64,7 @@ class CustomLoginView(LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pages'] = Page.objects.prefetch_related('page_sections').all()
+        context['pages'] = Page.objects.all()
         context['user'] = self.request.user
 
         return context
@@ -87,7 +87,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pages'] = Page.objects.prefetch_related('page_sections').all()
+        context['pages'] = Page.objects.all()
         context['user'] = self.request.user
         context['image_path'] = '/static/images/профиль.jpg'
 
@@ -114,7 +114,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pages'] = Page.objects.prefetch_related('page_sections').all()
+        context['pages'] = Page.objects.all()
         context['user'] = self.request.user
 
         return context

@@ -13,8 +13,3 @@ class SectionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'page',)
     search_fields = ('name', 'page')
     list_filter = ('page',)
-
-
-@admin.register(Table)
-class TableAdmin(admin.ModelAdmin):
-    list_display = ('id', 'seats_amount', 'is_reserved',)

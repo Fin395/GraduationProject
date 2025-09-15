@@ -10,7 +10,7 @@ from restaurant.views import SectionDetailView
 app_name = BookingConfig.name
 
 urlpatterns = [
-    path('booking', TableListView.as_view(), name='table_list'),
+    path('tables/', TableListView.as_view(), name='table_list'),
 
     # path('main/description/<int:pk>/', MainDescriptionView.as_view(), name='main_description'),
     # path('main/contacts/<int:pk>/', MainContactsView.as_view(), name='main_contacts'),

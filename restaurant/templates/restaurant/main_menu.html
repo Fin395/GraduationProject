@@ -20,6 +20,15 @@
                     <li><a class="dropdown-item" href="{% url 'users:login' %}">Войти</a></li>
                     <li><a class="dropdown-item" href="{% url 'users:register' %}">Зарегистрироваться</a></li>
                 {% endif %}
+
+            {% elif page.name == "Бронирование" %}
+                <li><a class="dropdown-item" href="{% url 'booking:table_list' %}">Схема зала</a></li>
+                {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="#">Забронировать столик</a></li>
+                {% else %}
+                    <li><a class="dropdown-item" href="{% url 'users:login' %}">Авторизуйтесь для бронирования</a></li>
+                {% endif %}
+
             {% else %}
                 {% for section in page.page_sections.all %}
                     <li><a class="dropdown-item" href="{% url 'restaurant:section_detail' pk=section.pk %}">{{ section.name }}</a></li>

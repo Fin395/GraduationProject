@@ -7,6 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('restaurant/', include('restaurant.urls', namespace='restaurant')),
     path('users/', include('users.urls', namespace='users')),
+    path('booking/', include('booking.urls', namespace='booking')),
+
 ]
 
 if settings.DEBUG:
