@@ -33,5 +33,4 @@ urlpatterns = [
         ReservationCancelView.as_view(),
         name="reservation_cancel",
     ),
-    # path('<int:pk>/delete/', ArticleDeleteView.as_view(), name='article_delete'),
 ]

@@ -75,7 +75,6 @@ class CustomLoginView(LoginView):
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = "users/user_detail.html"
-    # login_url = reverse_lazy('users:login')
 
     def get_object(self, queryset=None):
         user_to_view = super().get_object(queryset)

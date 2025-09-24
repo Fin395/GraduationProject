@@ -24,9 +24,3 @@ class UserRegistrationForm(UserCreationForm):
 
         if password and password_confirm and password != password_confirm:
             self.add_error("password2", "Passwords do not match")
-
-    # def clean_phone_number(self):
-    #     phone_number = self.cleaned_data.get('phone_number')
-    #     if phone_number and not phone_number.isdigit():
-    #         raise forms.ValidationError('Phone number must contain only digits.')
-    #     return phone_number

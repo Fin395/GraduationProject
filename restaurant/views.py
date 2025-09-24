@@ -28,14 +28,3 @@ class SectionDetailView(DetailView):
         context["user"] = self.request.user
 
         return context
-
-
-#     def get_queryset(self):
-#         category_id = self.kwargs.get('pk')
-#         return ProductService.get_products_by_category_cached(category_id)
-#
-#
-
-#
-#     def get_success_url(self, **kwargs):
-#         return reverse_lazy('blog:article_detail', kwargs={'pk': self.object.pk})
