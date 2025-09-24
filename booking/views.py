@@ -4,12 +4,7 @@ from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import (
-    CreateView,
-    DetailView,
-    ListView,
-    UpdateView,
-)
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from booking.forms import ReservationForm
 from booking.models import Reservation, Table
@@ -46,7 +41,7 @@ class ReservationCreateView(LoginRequiredMixin, CreateView):
         send_mail(
             subject="Rest-or-run. Бронирование",
             message=f"Уважаемый {user}! Спасибо, что выбрали наш ресторан! Ваша бронь подтверждена, ждем Вас"
-                    f" {reservation.date} в {reservation.time}!",
+            f" {reservation.date} в {reservation.time}!",
             from_email=EMAIL_HOST_USER,
             recipient_list=[user.email],
         )
@@ -143,42 +138,3 @@ class ReservationCancelView(LoginRequiredMixin, View):
         reservation.status = "Отменена"
         reservation.save()
         return redirect("booking:manage_reservations")
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['pages'] = Page.objects.all()
-    #     context['user'] = self.request.user
-    #
-    #     return context
-    #
-    # def get_object(self, queryset=None):
-    #     reservation = super().get_object(queryset)
-    #     user = self.request.user
-    #     if reservation.owner != user:
-    #         raise PermissionDenied
-    #     return reservation
-
-    # login_url = reverse_lazy('users:login')
-    # permission_required = 'mailings.view_emailmessage'
-
-    # def get_queryset(self):
-    #     if not self.request.user.has_perm('mailings.can_cancel_mailing') and not self.request.user.has_perm(
-    #             'users.can_block_user'):
-    #         return EmailMessage.objects.filter(owner=self.request.user)
-    #     return EmailMessage.objects.all()
-
-    # def post(self, request, pk):
-    #     mailing = get_object_or_404(Mailing, pk=pk)
-    #
-    #     if not request.user.has_perm('mailings.can_cancel_mailing'):
-    #         return HttpResponseForbidden("У вас нет прав для отключения рассылки.")
-    #
-    #     mailing.status = "Завершена"
-    #     mailing.close_sending = timezone.now()
-    #     mailing.save()
-    #
-    #     return redirect('mailings:mailing_list')
-
-    # self.request.kwargs['pk']
-
-    # class ="card-link" href="{% url 'booking:reservation_cancel' object.pk %}" > Удалить < / a >
