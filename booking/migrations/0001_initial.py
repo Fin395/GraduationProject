@@ -7,20 +7,33 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Table',
+            name="Table",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seats_amount', models.PositiveSmallIntegerField(verbose_name='Количество мест')),
-                ('is_reserved', models.BooleanField(default=False, verbose_name='Резерв')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "seats_amount",
+                    models.PositiveSmallIntegerField(verbose_name="Количество мест"),
+                ),
+                (
+                    "is_reserved",
+                    models.BooleanField(default=False, verbose_name="Резерв"),
+                ),
             ],
             options={
-                'verbose_name': 'Столик',
-                'verbose_name_plural': 'Столики',
+                "verbose_name": "Столик",
+                "verbose_name_plural": "Столики",
             },
         ),
     ]

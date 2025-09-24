@@ -7,21 +7,60 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('booking', '0001_initial'),
+        ("booking", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Reservation',
+            name="Reservation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('time', models.CharField(choices=[('10:00', '10:00'), ('11:00', '11:00'), ('12:00', '12:00'), ('13:00', '13:00'), ('14:00', '14:00'), ('15:00', '15:00'), ('16:00', '16:00'), ('17:00', '17:00'), ('18:00', '18:00'), ('19:00', '19:00'), ('20:00', '20:00'), ('21:00', '21:00'), ('22:00', '22:00'), ('23:00', '23:00')], default='10:00', max_length=5, verbose_name='Время')),
-                ('date', models.DateField(verbose_name='Дата')),
-                ('table', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tables', to='booking.table', verbose_name='Столик')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "time",
+                    models.CharField(
+                        choices=[
+                            ("10:00", "10:00"),
+                            ("11:00", "11:00"),
+                            ("12:00", "12:00"),
+                            ("13:00", "13:00"),
+                            ("14:00", "14:00"),
+                            ("15:00", "15:00"),
+                            ("16:00", "16:00"),
+                            ("17:00", "17:00"),
+                            ("18:00", "18:00"),
+                            ("19:00", "19:00"),
+                            ("20:00", "20:00"),
+                            ("21:00", "21:00"),
+                            ("22:00", "22:00"),
+                            ("23:00", "23:00"),
+                        ],
+                        default="10:00",
+                        max_length=5,
+                        verbose_name="Время",
+                    ),
+                ),
+                ("date", models.DateField(verbose_name="Дата")),
+                (
+                    "table",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="tables",
+                        to="booking.table",
+                        verbose_name="Столик",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Бронь',
-                'verbose_name_plural': 'Брони',
+                "verbose_name": "Бронь",
+                "verbose_name_plural": "Брони",
             },
         ),
     ]

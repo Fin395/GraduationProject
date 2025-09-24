@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('restaurant', '0003_restaurant_delete_page_delete_pagecategory'),
+        ("restaurant", "0003_restaurant_delete_page_delete_pagecategory"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='restaurant',
-            name='client_message',
+            model_name="restaurant",
+            name="client_message",
         ),
         migrations.RemoveField(
-            model_name='restaurant',
-            name='client_name',
+            model_name="restaurant",
+            name="client_name",
         ),
         migrations.RemoveField(
-            model_name='restaurant',
-            name='client_phone_number',
+            model_name="restaurant",
+            name="client_phone_number",
         ),
     ]

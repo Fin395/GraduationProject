@@ -6,23 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('restaurant', '0005_page_section_delete_restaurant'),
+        ("restaurant", "0005_page_section_delete_restaurant"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='section',
-            name='content',
-            field=models.TextField(blank=True, null=True, verbose_name='Текст на странице'),
+            model_name="section",
+            name="content",
+            field=models.TextField(
+                blank=True, null=True, verbose_name="Текст на странице"
+            ),
         ),
         migrations.AlterField(
-            model_name='section',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='photos/', verbose_name='Изображение на странице'),
+            model_name="section",
+            name="image",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="photos/",
+                verbose_name="Изображение на странице",
+            ),
         ),
         migrations.AlterField(
-            model_name='section',
-            name='title',
-            field=models.CharField(blank=True, max_length=50, null=True, verbose_name='Заголовок на странице'),
+            model_name="section",
+            name="title",
+            field=models.CharField(
+                blank=True,
+                max_length=50,
+                null=True,
+                verbose_name="Заголовок на странице",
+            ),
         ),
     ]

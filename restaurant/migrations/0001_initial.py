@@ -15,30 +15,91 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='PageCategory',
+            name="PageCategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Введите название раздела', max_length=50, verbose_name='Название раздела')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        help_text="Введите название раздела",
+                        max_length=50,
+                        verbose_name="Название раздела",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Название раздела',
-                'verbose_name_plural': 'Названия разделов',
+                "verbose_name": "Название раздела",
+                "verbose_name_plural": "Названия разделов",
             },
         ),
         migrations.CreateModel(
-            name='Page',
+            name="Page",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Название страницы')),
-                ('title', models.CharField(max_length=100, verbose_name='Заголовок на странице')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Описание на странице')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='photos/', verbose_name='Изображение на странице')),
-                ('owner', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='owner_pages', to=settings.AUTH_USER_MODEL, verbose_name='Владелец')),
-                ('page_category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pages', to='restaurant.pagecategory')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=100, verbose_name="Название страницы"),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        max_length=100, verbose_name="Заголовок на странице"
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="Описание на странице"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="photos/",
+                        verbose_name="Изображение на странице",
+                    ),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="owner_pages",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Владелец",
+                    ),
+                ),
+                (
+                    "page_category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="pages",
+                        to="restaurant.pagecategory",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Страница',
-                'verbose_name_plural': 'Страницы',
+                "verbose_name": "Страница",
+                "verbose_name_plural": "Страницы",
             },
         ),
     ]

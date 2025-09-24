@@ -1,12 +1,16 @@
-from booking.models import Table, Reservation
 from django.contrib import admin
+
+from booking.models import Reservation, Table
 
 
 @admin.register(Table)
 class TableAdmin(admin.ModelAdmin):
-    list_display = ('id', 'seats_amount', 'is_reserved',)
+    list_display = (
+        "id",
+        "seats_amount",
+    )
 
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'table', 'date', 'time', 'client')
+    list_display = ("id", "table", "date", "time", "owner", "status")

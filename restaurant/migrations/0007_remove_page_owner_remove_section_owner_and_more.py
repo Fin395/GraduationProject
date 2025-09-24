@@ -6,21 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('restaurant', '0006_alter_section_content_alter_section_image_and_more'),
+        ("restaurant", "0006_alter_section_content_alter_section_image_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='page',
-            name='owner',
+            model_name="page",
+            name="owner",
         ),
         migrations.RemoveField(
-            model_name='section',
-            name='owner',
+            model_name="section",
+            name="owner",
         ),
         migrations.AlterField(
-            model_name='page',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='Название страницы'),
+            model_name="page",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="Название страницы"),
         ),
     ]

@@ -6,20 +6,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('restaurant', '0007_remove_page_owner_remove_section_owner_and_more'),
+        ("restaurant", "0007_remove_page_owner_remove_section_owner_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Table',
+            name="Table",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seats_amount', models.PositiveSmallIntegerField(verbose_name='Количество мест')),
-                ('is_reserved', models.BooleanField(default=False, verbose_name='Резерв')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "seats_amount",
+                    models.PositiveSmallIntegerField(verbose_name="Количество мест"),
+                ),
+                (
+                    "is_reserved",
+                    models.BooleanField(default=False, verbose_name="Резерв"),
+                ),
             ],
             options={
-                'verbose_name': 'Столик',
-                'verbose_name_plural': 'Столики',
+                "verbose_name": "Столик",
+                "verbose_name_plural": "Столики",
             },
         ),
     ]

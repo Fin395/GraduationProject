@@ -8,45 +8,132 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('restaurant', '0004_remove_restaurant_client_message_and_more'),
+        ("restaurant", "0004_remove_restaurant_client_message_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Page',
+            name="Page",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='Название страницы')),
-                ('owner', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='pages', to=settings.AUTH_USER_MODEL, verbose_name='Владелец')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=50, verbose_name="Название страницы"),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="pages",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Владелец",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Страница',
-                'verbose_name_plural': 'Страницы',
+                "verbose_name": "Страница",
+                "verbose_name_plural": "Страницы",
             },
         ),
         migrations.CreateModel(
-            name='Section',
+            name="Section",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='Название раздела')),
-                ('title', models.CharField(max_length=50, verbose_name='Заголовок на странице')),
-                ('image', models.ImageField(upload_to='photos/', verbose_name='Изображение на странице')),
-                ('content', models.TextField(verbose_name='Текст на странице')),
-                ('epigraph', models.TextField(blank=True, null=True, verbose_name='Эпиграф')),
-                ('email', models.EmailField(blank=True, max_length=254, null=True, unique=True, verbose_name='Email')),
-                ('phone_number', models.CharField(blank=True, max_length=25, null=True, verbose_name='Телефон')),
-                ('country', models.CharField(blank=True, max_length=35, null=True, verbose_name='Страна')),
-                ('address', models.CharField(blank=True, max_length=50, null=True, verbose_name='Адрес')),
-                ('owner', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='sections', to=settings.AUTH_USER_MODEL, verbose_name='Владелец')),
-                ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='page_sections', to='restaurant.page', verbose_name='Страница')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=50, verbose_name="Название раздела"),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        max_length=50, verbose_name="Заголовок на странице"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="photos/", verbose_name="Изображение на странице"
+                    ),
+                ),
+                ("content", models.TextField(verbose_name="Текст на странице")),
+                (
+                    "epigraph",
+                    models.TextField(blank=True, null=True, verbose_name="Эпиграф"),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True,
+                        max_length=254,
+                        null=True,
+                        unique=True,
+                        verbose_name="Email",
+                    ),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(
+                        blank=True, max_length=25, null=True, verbose_name="Телефон"
+                    ),
+                ),
+                (
+                    "country",
+                    models.CharField(
+                        blank=True, max_length=35, null=True, verbose_name="Страна"
+                    ),
+                ),
+                (
+                    "address",
+                    models.CharField(
+                        blank=True, max_length=50, null=True, verbose_name="Адрес"
+                    ),
+                ),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="sections",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Владелец",
+                    ),
+                ),
+                (
+                    "page",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="page_sections",
+                        to="restaurant.page",
+                        verbose_name="Страница",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Раздел',
-                'verbose_name_plural': 'Разделы',
+                "verbose_name": "Раздел",
+                "verbose_name_plural": "Разделы",
             },
         ),
         migrations.DeleteModel(
-            name='Restaurant',
+            name="Restaurant",
         ),
     ]

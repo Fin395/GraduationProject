@@ -6,18 +6,30 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0003_user_token'),
+        ("users", "0003_user_token"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='name',
-            field=models.CharField(blank=True, help_text='Укажите имя', max_length=35, null=True, verbose_name='Имя'),
+            model_name="user",
+            name="name",
+            field=models.CharField(
+                blank=True,
+                help_text="Укажите имя",
+                max_length=35,
+                null=True,
+                verbose_name="Имя",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='surname',
-            field=models.CharField(blank=True, help_text='Укажите фамилию', max_length=35, null=True, verbose_name='Фамилия'),
+            model_name="user",
+            name="surname",
+            field=models.CharField(
+                blank=True,
+                help_text="Укажите фамилию",
+                max_length=35,
+                null=True,
+                verbose_name="Фамилия",
+            ),
         ),
     ]

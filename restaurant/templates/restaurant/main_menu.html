@@ -11,8 +11,8 @@
                                 <button type="submit" class="dropdown-item">Выйти</button>
                             </form>
                         </li>
-                        <li><a class="dropdown-item" href="#">Управление бронированием</a></li>
-                        <li><a class="dropdown-item" href="#">История бронирований</a></li>
+                        <li><a class="dropdown-item" href="{% url 'booking:manage_reservations' %}">Управление бронированием</a></li>
+                        <li><a class="dropdown-item" href="{% url 'booking:reservation_history' %}">История бронирований</a></li>
                         <li><a class="dropdown-item" href="{% url 'users:user_detail' user.pk %}">Мой профиль</a></li>
                         <li><a class="dropdown-item" href="{% url 'users:user_update' user.pk %}">Редактировать профиль</a></li>
 
