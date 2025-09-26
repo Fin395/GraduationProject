@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect
@@ -117,9 +117,11 @@ class ReservationsToManageListView(LoginRequiredMixin, ListView):
         return Reservation.objects.filter(owner=self.request.user, status="Открыта")
 
 
-class ReservationsToHistoryListView(LoginRequiredMixin, ListView):
+class ReservationsToHistoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Reservation
     template_name = "booking/reservation_history.html"
+    permission_required = 'users.can_block_user'
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -129,7 +131,13 @@ class ReservationsToHistoryListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        return Reservation.objects.filter(owner=self.request.user)
+        user = self.request.user
+        if not user.has_perm('users.can_block_user'):
+            return Reservation.objects.filter(owner=self.request.user)
+        else:
+            return Reservation.objects.all()
+
+
 
 
 class ReservationCancelView(LoginRequiredMixin, View):

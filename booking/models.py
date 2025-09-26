@@ -73,7 +73,7 @@ class Reservation(models.Model):
         max_length=20,
         choices=RESERVATION_STATUS_CHOICES,
         verbose_name="Статус",
-        default="Актуальна",
+        default="Открыта",
     )
 
     def __str__(self):

@@ -1,12 +1,14 @@
 import secrets
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
+from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import DetailView, TemplateView
+from django.views import View
+from django.views.generic import DetailView, TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 
 from config.settings import EMAIL_HOST_USER
@@ -125,3 +127,34 @@ class ConfirmationMessageView(TemplateView):
         context["user"] = self.request.user
 
         return context
+
+
+class UsersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = User
+    template_name = 'users/users_list.html'
+    permission_required = 'users.can_block_user'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['users'] = User.objects.all()
+        context['pages'] = Page.objects.all()
+        context['user'] = self.request.user
+        return context
+
+
+class UserBlockView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        user = get_object_or_404(User, pk=pk)
+
+        if not request.user.has_perm('users.can_block_user'):
+            return HttpResponseForbidden("У вас нет прав для блокирования пользователя.")
+
+        if request.user == user:
+            return HttpResponseForbidden("Вы не можете заблокировать себя")
+
+        else:
+            user.is_active = False
+            user.save()
+
+
+        return redirect('users:users_list')

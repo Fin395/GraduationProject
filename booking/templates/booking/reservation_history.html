@@ -11,9 +11,13 @@
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title">Бронь на {{ object.time }} {{ object.date }}</h5>
+                <h3 class="card-title">{{ object.table }}</h3>
                 <h6 class="card-title">Статус: {{ object.status }}</h6>
-
-                <a href="{% url 'booking:reservation_detail' object.pk %}" class="card-link">Просмотр брони</a>
+                {% if not "users.can_block_user" in perms %}
+                    <a href="{% url 'booking:reservation_detail' object.pk %}" class="card-link">Просмотр брони</a>
+                {% elif "users.can_block_user" in perms and object.status == "Открыта" %}
+                <a href="{% url 'booking:reservation_cancel' object.pk %}" class="card-link">Отменить бронь</a>
+                {% endif %}
             </div>
         </div>
     </div>
