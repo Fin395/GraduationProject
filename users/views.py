@@ -131,14 +131,14 @@ class ConfirmationMessageView(TemplateView):
 
 class UsersListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = User
-    template_name = 'users/users_list.html'
-    permission_required = 'users.can_block_user'
+    template_name = "users/users_list.html"
+    permission_required = "users.can_block_user"
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['users'] = User.objects.all()
-        context['pages'] = Page.objects.all()
-        context['user'] = self.request.user
+        context["users"] = User.objects.all()
+        context["pages"] = Page.objects.all()
+        context["user"] = self.request.user
         return context
 
 
@@ -146,8 +146,10 @@ class UserBlockView(LoginRequiredMixin, View):
     def post(self, request, pk):
         user = get_object_or_404(User, pk=pk)
 
-        if not request.user.has_perm('users.can_block_user'):
-            return HttpResponseForbidden("У вас нет прав для блокирования пользователя.")
+        if not request.user.has_perm("users.can_block_user"):
+            return HttpResponseForbidden(
+                "У вас нет прав для блокирования пользователя."
+            )
 
         if request.user == user:
             return HttpResponseForbidden("Вы не можете заблокировать себя")
@@ -156,5 +158,4 @@ class UserBlockView(LoginRequiredMixin, View):
             user.is_active = False
             user.save()
 
-
-        return redirect('users:users_list')
+        return redirect("users:users_list")

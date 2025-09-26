@@ -16,7 +16,10 @@
                 {% if not "users.can_block_user" in perms %}
                     <a href="{% url 'booking:reservation_detail' object.pk %}" class="card-link">Просмотр брони</a>
                 {% elif "users.can_block_user" in perms and object.status == "Открыта" %}
-                <a href="{% url 'booking:reservation_cancel' object.pk %}" class="card-link">Отменить бронь</a>
+                <form action="{% url 'booking:reservation_cancel' object.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Отменить бронь</button>
+                </form>
                 {% endif %}
             </div>
         </div>
