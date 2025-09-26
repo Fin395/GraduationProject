@@ -1,0 +1,14 @@
+{% extends "restaurant/base.html" %}
+
+{% block content %}
+<h2>Вход</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+    <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'users:password_reset' %}">Забыли
+        пароль?</a>
+
+</form>
+
+{% endblock %}
