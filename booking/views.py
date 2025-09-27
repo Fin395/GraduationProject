@@ -52,8 +52,6 @@ class ReservationCreateView(LoginRequiredMixin, CreateView):
         context["pages"] = Page.objects.all()
         context["image_path"] = "/static/images/image-22-09-25-07-08.jpg"
 
-        # context['user'] = self.request.user
-        # context['tables'] = Table.objects.all()
         return context
 
 
@@ -129,7 +127,11 @@ class ReservationsToHistoryListView(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        return Reservation.objects.filter(owner=self.request.user)
+        user = self.request.user
+        if not user.has_perm("users.can_block_user"):
+            return Reservation.objects.filter(owner=self.request.user)
+        else:
+            return Reservation.objects.all()
 
 
 class ReservationCancelView(LoginRequiredMixin, View):
@@ -137,4 +139,7 @@ class ReservationCancelView(LoginRequiredMixin, View):
         reservation = get_object_or_404(Reservation, pk=pk)
         reservation.status = "Отменена"
         reservation.save()
+        if request.user.has_perm("users.can_block_user"):
+            return redirect("booking:reservation_history")
+
         return redirect("booking:manage_reservations")
