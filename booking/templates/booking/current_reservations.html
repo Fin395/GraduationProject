@@ -1,0 +1,27 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Мои Бронирования{% endblock %}</title>
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <p class="display-4">Мои текущие бронирования</p>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for object in object_list %}
+
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Бронь на {{ object.time }} {{ object.date }}</h5>
+                <h6 class="card-title">Статус: {{ object.status }}</h6>
+
+                <a href="{% url 'booking:reservation_detail' object.pk %}" class="card-link">Просмотр брони</a>
+                <a href="{% url 'booking:reservation_history' %}" class="card-link">В историю бронирований</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% if not object_list %}
+        <h5 class="card-title">У Вас нет текущих бронирований. <a href="{% url 'booking:reservation_create' %}" class="card-link">Нажмите для создания брони</a></h5>
+    {% endif %}
+
+</div>
+{% endblock %}

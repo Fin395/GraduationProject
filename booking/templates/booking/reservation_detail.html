@@ -1,0 +1,29 @@
+{% extends 'restaurant/base.html' %}
+<title>{% block title %}Просмотр брони{% endblock %}</title>
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        Бронь на {{ object.time }} {{ object.date }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Дата: {{ object.date }}</h5>
+        <p class="card-text"> Столик № {{ object.table.pk }}</p>
+        <p class="card-text"> Количество мест: {{ object.table.seats_amount }}</p>
+        <p class="card-text"> Время бронирования: {{ object.time }}</p>
+        <p class="card-text"> Контактный телефон: {{ object.client_phone_number }}</p>
+        <p class="card-text"> Бронь на имя: {{ object.client_name }}</p>
+        <p class="card-text"> Пожелания: {{ object.client_willing }}</p>
+        <p class="card-text"> Статус: {{ object.status }}</p>
+        <a class="card-link" href="{% url 'booking:manage_reservations' %}">Мои текущие бронирования</a>
+        <a class="card-link" href="{% url 'booking:reservation_history' %}">История бронирований</a>
+
+        {% if object.status == "Открыта" %}
+        <a class="card-link link-outline-danger" href="{% url 'booking:reservation_update' object.pk %}">Редактировать</a>
+        <form action="{% url 'booking:reservation_cancel' object.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Отменить бронь</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
